@@ -55,6 +55,13 @@ TurtleBot3Burger {
     }
     RobotisLds01 {
     }
+    Camera {
+      translation 0.045 0 0.09
+      name "camera"
+      fieldOfView 1.047
+      width 320
+      height 240
+    }
   ]
 }
 PottedTree {

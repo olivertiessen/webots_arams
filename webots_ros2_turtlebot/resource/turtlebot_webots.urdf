@@ -11,6 +11,18 @@
             </ros>
         </device>
 
+        <device reference="camera" type="Camera">
+            <ros>
+                <enabled>true</enabled>
+                <updateRate>10</updateRate>
+                <topicName>/camera</topicName>
+                <imageSuffix>/image_raw</imageSuffix>
+                <cameraInfoSuffix>/camera_info</cameraInfoSuffix>
+                <alwaysOn>true</alwaysOn>
+                <frameName>camera_link</frameName>
+            </ros>
+        </device>
+
         <plugin type="webots_ros2_driver::Ros2IMU">
             <enabled>true</enabled>
             <updateRate>20</updateRate>
