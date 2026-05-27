@@ -11,12 +11,22 @@ data_files.append(('share/' + package_name + '/resource', [
     'resource/turtlebot3_burger_example_map.pgm',
     'resource/turtlebot3_burger_example_map.yaml',
     'resource/turtlebot_webots.urdf',
+    'resource/moving_apriltag.urdf',
     'resource/ros2control.yml',
     'resource/nav2_params.yaml'
 ]))
 
 data_files.append(('share/' + package_name + '/worlds', [
     'worlds/turtlebot3_burger_example.wbt', 'worlds/.turtlebot3_burger_example.wbproj',
+]))
+data_files.append(('share/' + package_name + '/protos', [
+    'protos/AprilTag.proto',
+]))
+data_files.append(('share/' + package_name + '/worlds/textures/apriltag', [
+    'worlds/textures/apriltag/tag41_12_00000.png',
+    'worlds/textures/apriltag/tag41_12_00001.png',
+    'worlds/textures/apriltag/tag41_12_00002.png',
+    'worlds/textures/apriltag/tag41_12_00003.png',
 ]))
 data_files.append(('share/' + package_name, ['package.xml']))
 

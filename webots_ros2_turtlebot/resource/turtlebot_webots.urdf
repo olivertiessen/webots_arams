@@ -19,7 +19,7 @@
                 <imageSuffix>/image_raw</imageSuffix>
                 <cameraInfoSuffix>/camera_info</cameraInfoSuffix>
                 <alwaysOn>true</alwaysOn>
-                <frameName>camera_link</frameName>
+                <frameName>camera_optical_frame</frameName>
             </ros>
         </device>
 

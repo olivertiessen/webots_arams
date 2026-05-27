@@ -61,11 +61,23 @@ def generate_launch_description():
         arguments=['0', '0', '0', '0', '0', '0', 'base_link', 'base_footprint'],
     )
 
+    # Camera mount relative to the robot origin: extension slot (-0.03, 0, 0.153)
+    # + camera within the slot (0.045, 0, 0.09) = (0.015, 0, 0.243).
     camera_tf_publisher = Node(
         package='tf2_ros',
         executable='static_transform_publisher',
         output='screen',
-        arguments=['0.045', '0', '0.09', '0', '0', '0', 'base_link', 'camera_link'],
+        arguments=['0.015', '0', '0.243', '0', '0', '0', 'base_link', 'camera_link'],
+    )
+
+    # Optical frame (z-forward, x-right, y-down) the camera images are published in.
+    # AprilTag poses are expressed in this frame; the rotation is the canonical
+    # camera_link -> optical transform (yaw=-90, pitch=0, roll=-90).
+    camera_optical_tf_publisher = Node(
+        package='tf2_ros',
+        executable='static_transform_publisher',
+        output='screen',
+        arguments=['0', '0', '0', '-1.5708', '0', '-1.5708', 'camera_link', 'camera_optical_frame'],
     )
 
     # ROS control spawners
@@ -103,6 +115,17 @@ def generate_launch_description():
             ros2_control_params
         ],
         remappings=mappings,
+        respawn=True
+    )
+
+    # Extern controller for the floating, slowly oscillating AprilTag.
+    moving_apriltag_description = os.path.join(package_dir, 'resource', 'moving_apriltag.urdf')
+    moving_apriltag_driver = WebotsController(
+        robot_name='moving_apriltag',
+        parameters=[
+            {'robot_description': moving_apriltag_description,
+             'use_sim_time': use_sim_time},
+        ],
         respawn=True
     )
 
@@ -157,8 +180,10 @@ def generate_launch_description():
         robot_state_publisher,
         footprint_publisher,
         camera_tf_publisher,
+        camera_optical_tf_publisher,
 
         turtlebot_driver,
+        moving_apriltag_driver,
         waiting_nodes,
 
         # This action will kill all nodes once the Webots simulation has exited

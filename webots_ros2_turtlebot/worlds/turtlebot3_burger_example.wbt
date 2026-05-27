@@ -21,6 +21,7 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/develop/projec
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/develop/projects/objects/tables/protos/Table.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/develop/projects/objects/traffic/protos/DirectionPanel.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/develop/projects/objects/plants/protos/BunchOfSunFlowers.proto"
+EXTERNPROTO "../protos/AprilTag.proto"
 
 WorldInfo {
   info [
@@ -242,4 +243,48 @@ DirectionPanel {
 BunchOfSunFlowers {
   translation 7.68 -0.52 0.5
   rotation 0 0 1 1.5708
+}
+# AprilTag (tagStandard41h12) markers facing the robot's camera (-X side).
+# Detector edge "size" = 5/13 * 0.26 = 0.10 m.
+AprilTag {
+  translation 5.1 -0.4 0.13
+  rotation 0 0 1 1.5708
+  name "april tag 0"
+  texture [
+    "textures/apriltag/tag41_12_00000.png"
+  ]
+}
+AprilTag {
+  translation 5.1 0 0.13
+  rotation 0 0 1 1.5708
+  name "april tag 1"
+  texture [
+    "textures/apriltag/tag41_12_00001.png"
+  ]
+}
+AprilTag {
+  translation 5.1 0.4 0.13
+  rotation 0 0 1 1.5708
+  name "april tag 2"
+  texture [
+    "textures/apriltag/tag41_12_00002.png"
+  ]
+}
+# Floating AprilTag that slowly oscillates forward/backward along Y. It is an
+# <extern> supervisor robot driven by the webots_ros2_driver "AprilTagOscillator"
+# plugin (see resource/moving_apriltag.urdf), which moves it with a slow sine.
+Robot {
+  translation 6 -2 0.4
+  name "moving_apriltag"
+  controller "<extern>"
+  supervisor TRUE
+  children [
+    AprilTag {
+      rotation 0 0 1 0
+      name "moving april tag"
+      texture [
+        "textures/apriltag/tag41_12_00003.png"
+      ]
+    }
+  ]
 }
