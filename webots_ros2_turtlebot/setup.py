@@ -13,7 +13,8 @@ data_files.append(('share/' + package_name + '/resource', [
     'resource/turtlebot_webots.urdf',
     'resource/moving_apriltag.urdf',
     'resource/ros2control.yml',
-    'resource/nav2_params.yaml'
+    'resource/nav2_params.yaml',
+    'resource/cartographer.lua',
 ]))
 
 data_files.append(('share/' + package_name + '/worlds', [

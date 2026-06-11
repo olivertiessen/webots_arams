@@ -18,7 +18,7 @@
                 <topicName>/camera</topicName>
                 <imageSuffix>/image_raw</imageSuffix>
                 <cameraInfoSuffix>/camera_info</cameraInfoSuffix>
-                <alwaysOn>true</alwaysOn>
+                <alwaysOn>false</alwaysOn>
                 <frameName>camera_optical_frame</frameName>
             </ros>
         </device>

@@ -148,11 +148,14 @@ def generate_launch_description():
 
     # SLAM
     if 'turtlebot3_cartographer' in get_packages_with_prefixes():
+        cartographer_config_dir = os.path.join(package_dir, 'resource')
         turtlebot_slam = IncludeLaunchDescription(
             PythonLaunchDescriptionSource(os.path.join(
                 get_package_share_directory('turtlebot3_cartographer'), 'launch', 'cartographer.launch.py')),
             launch_arguments=[
                 ('use_sim_time', use_sim_time),
+                ('cartographer_config_dir', cartographer_config_dir),
+                ('configuration_basename', 'cartographer.lua'),
             ],
             condition=launch.conditions.IfCondition(use_slam))
         navigation_nodes.append(turtlebot_slam)

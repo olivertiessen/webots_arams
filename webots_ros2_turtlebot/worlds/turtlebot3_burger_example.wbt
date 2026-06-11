@@ -21,6 +21,7 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/develop/projec
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/develop/projects/objects/tables/protos/Table.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/develop/projects/objects/traffic/protos/DirectionPanel.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/develop/projects/objects/plants/protos/BunchOfSunFlowers.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/develop/projects/objects/drinks/protos/Can.proto"
 EXTERNPROTO "../protos/AprilTag.proto"
 
 WorldInfo {
@@ -60,8 +61,8 @@ TurtleBot3Burger {
       translation 0.045 0 0.09
       name "camera"
       fieldOfView 1.047
-      width 320
-      height 240
+      width 640
+      height 480
     }
   ]
 }
@@ -243,6 +244,22 @@ DirectionPanel {
 BunchOfSunFlowers {
   translation 7.68 -0.52 0.5
   rotation 0 0 1 1.5708
+}
+# Soda can resting on the table (Webots equivalent of the Gazebo Classic "cola can").
+Can {
+  translation 7.4 -0.3 0.56
+}
+Can {
+  translation 6 1.5 0.06
+  name "can(1)"
+}
+Can {
+  translation 6.8 -2.5 0.06
+  name "can(2)"
+}
+Can {
+  translation 8.3 2.6 0.06
+  name "can(3)"
 }
 # AprilTag (tagStandard41h12) markers facing the robot's camera (-X side).
 # Detector edge "size" = 5/13 * 0.26 = 0.10 m.

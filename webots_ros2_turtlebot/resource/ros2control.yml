@@ -21,6 +21,12 @@ diffdrive_controller:
 
     use_stamped_vel: false
     base_frame_id: "base_link"
+
+    # Publish odom below the 50 Hz sim step rate so two odom messages can never
+    # share the same sim timestamp. Cartographer aborts on duplicate stamps
+    # (map_by_time.h: "Check failed: data.time > prev->first"), which made SLAM
+    # crash intermittently.
+    publish_rate: 20.0
     
     linear:
       x:
