@@ -33,6 +33,9 @@ data_files.append(('share/' + package_name + '/photos', [
 data_files.append(('share/' + package_name + '/controllers/pedestrian', [
     'controllers/pedestrian/pedestrian.py',
 ]))
+data_files.append(('share/' + package_name + '/controllers/hospital_supervisor', [
+    'controllers/hospital_supervisor/hospital_supervisor.py',
+]))
 data_files.append(('share/' + package_name + '/protos', [
     'protos/AprilTag.proto',
 ]))
