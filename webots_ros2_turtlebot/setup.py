@@ -29,6 +29,10 @@ data_files.append(('share/' + package_name + '/photos', [
     'photos/Tag_family_36h11_ID_1.png',
     'photos/Tag_family_36h11_ID_2.png',
     'photos/Tag_family_36h11_ID_3.png',
+    'photos/aruco_4x4_50_id_1.png',
+    'photos/aruco_4x4_50_id_2.png',
+    'photos/aruco_4x4_50_id_3.png',
+    'photos/cork.png',
 ]))
 data_files.append(('share/' + package_name + '/controllers/pedestrian', [
     'controllers/pedestrian/pedestrian.py',

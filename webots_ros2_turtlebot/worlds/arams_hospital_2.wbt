@@ -316,33 +316,67 @@ Solid {
 Solid {
   translation 0.131949 -7.45632 0.7999999999999999
   children [
-    DEF pinnboard Shape {
+    Shape {
       appearance PBRAppearance {
-        baseColorMap ImageTexture {
-          url [
-            "../photos/Tag_family_36h11_ID_2.png"
-          ]
-        }
-        roughness 0.8
+        baseColor 0.25 0.13 0.06
+        roughness 0.9
+        metalness 0
       }
       geometry Box {
-        size 0.5 0.05 0.5
+        size 0.9 0.05 0.7
       }
     }
+    Pose {
+      translation 0 0.02 0
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../photos/cork.png"
+              ]
+            }
+            roughness 0.95
+            metalness 0
+          }
+          geometry Box {
+            size 0.8 0.04 0.6
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0.045 0
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap DEF PINNWAND_TEX ImageTexture {
+              url [
+                "textures/apriltag/tag41_12_00001.png"
+              ]
+            }
+            roughness 0.8
+          }
+          geometry Box {
+            size 0.4 0.01 0.4
+          }
+        }
+      ]
+    }
   ]
-  name "pinboard_backing"
+  name "tag_random"
   boundingObject Box {
-    size 1.5 0.05 1
+    size 0.9 0.05 0.7
   }
 }
 Solid {
   translation 6.17182 1.39697 0.8
   children [
-    DEF pinnboard Shape {
+    Shape {
       appearance PBRAppearance {
         baseColorMap ImageTexture {
           url [
-            "../photos/Tag_family_36h11_ID_3.png"
+            "textures/apriltag/tag41_12_00003.png"
           ]
         }
         roughness 0.8
@@ -352,41 +386,41 @@ Solid {
       }
     }
   ]
-  name "pinboard_backing(1)"
+  name "tag_door_3"
   boundingObject Box {
-    size 1.5 0.05 1
+    size 0.5 0.05 0.5
   }
 }
 Solid {
-  translation 0.946979 1.43861 0.8
+  translation 0.946979 1.39697 0.8
   children [
-    DEF pinnboard Shape {
+    Shape {
       appearance PBRAppearance {
         baseColorMap ImageTexture {
           url [
-            "../photos/Tag_family_36h11_ID_2.png"
+            "textures/apriltag/tag41_12_00002.png"
           ]
         }
         roughness 0.8
       }
       geometry Box {
-        size 0.5 0.1 0.5
+        size 0.5 0.05 0.5
       }
     }
   ]
-  name "pinboard_backing(2)"
+  name "tag_door_2"
   boundingObject Box {
-    size 1.5 0.05 1
+    size 0.5 0.05 0.5
   }
 }
 Solid {
   translation -4.35745 1.40552 0.8
   children [
-    DEF pinnboard Shape {
+    Shape {
       appearance PBRAppearance {
         baseColorMap ImageTexture {
           url [
-            "../photos/Tag_family_36h11_ID_1.png"
+            "textures/apriltag/tag41_12_00001.png"
           ]
         }
         roughness 0.8
@@ -396,9 +430,9 @@ Solid {
       }
     }
   ]
-  name "pinboard_backing(3)"
+  name "tag_door_1"
   boundingObject Box {
-    size 1.5 0.1 1
+    size 0.5 0.05 0.5
   }
 }
 Solid {

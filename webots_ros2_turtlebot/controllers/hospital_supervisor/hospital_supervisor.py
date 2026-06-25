@@ -55,6 +55,32 @@ def pose_for(state, bed_x, bed_y):
     return [bed_x, bed_y - 1.3, STANDING_HEIGHT], [0.0, 0.0, 1.0, 0.0]
 
 
+# --- Pinnwand (ArUco-Tag neben dem TurtleBot) ------------------------------
+
+# DEF-Name der ImageTexture auf der Pinnwand neben dem TurtleBot.
+PINNWAND_TEX_DEF = 'PINNWAND_TEX'
+ARUCO_IDS = (1, 2, 3)
+
+
+def randomize_pinnwand(robot, rng):
+    """Zeigt zu Beginn der Simulation einen zufaelligen ArUco-Tag
+    (ID 1, 2 oder 3) auf der Pinnwand neben dem TurtleBot an."""
+    texture = robot.getFromDef(PINNWAND_TEX_DEF)
+    if texture is None:
+        print('[hospital_supervisor] WARNUNG: Pinnwand-Textur {} nicht gefunden'
+              .format(PINNWAND_TEX_DEF))
+        return
+    tag_id = rng.choice(ARUCO_IDS)
+    # Absoluter Pfad: zur Laufzeit gesetzte url-Felder werden relativ zum
+    # Arbeitsverzeichnis des Controllers aufgeloest, nicht zum Weltfile.
+    # controllers/hospital_supervisor/ -> Paketwurzel -> worlds/textures/apriltag/
+    pkg_share = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    url = os.path.join(pkg_share, 'worlds', 'textures', 'apriltag',
+                       'tag41_12_{:05d}.png'.format(tag_id))
+    texture.getField('url').setMFString(0, url)
+    print('[hospital_supervisor] Pinnwand zeigt AprilTag 41h12 ID {}'.format(tag_id))
+
+
 def randomize_patients(robot, rng):
     print('[hospital_supervisor] Patientenzustaende fuer diesen Durchlauf:')
     for def_name, (bed_x, bed_y) in PATIENT_BEDS.items():
@@ -140,6 +166,7 @@ def main():
         print('[hospital_supervisor] Verwende festen Seed: {}'.format(seed))
 
     randomize_patients(robot, rng)
+    randomize_pinnwand(robot, rng)
 
     node = None
     if ROS_AVAILABLE:
