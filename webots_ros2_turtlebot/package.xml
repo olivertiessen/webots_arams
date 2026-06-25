@@ -12,6 +12,7 @@
   <url type="repository">https://github.com/cyberbotics/webots_ros2</url>
 
   <exec_depend>rclpy</exec_depend>
+  <exec_depend>std_srvs</exec_depend>
   <exec_depend>builtin_interfaces</exec_depend>
   <exec_depend>webots_ros2_driver</exec_depend>
   <exec_depend>webots_ros2_control</exec_depend>
